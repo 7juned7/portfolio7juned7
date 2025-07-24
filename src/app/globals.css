@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+.skills3d-wrapper {
+  perspective: 1000px;
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills3d-rotate {
+  
+  width: 100%;
+ cursor: pointer;
+  transform-style: preserve-3d;
+  animation: rotateY 12s linear infinite;
+  animation-play-state: running;
+}
+
+.skills3d-rotate:hover {
+ 
+  animation-play-state: paused;
+}
+
+.skill3d-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  font-size: 2.5rem;
+  color: #00d8ff;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+.skill3d-item:hover{
+transform: scale(2);
+}
+
+.close-btn {
+  transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: scale(2);
+}
+
+@keyframes rotateY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
