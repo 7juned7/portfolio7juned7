@@ -150,11 +150,20 @@ const HeroSection = () => {
   {/* Projects Button */}
   
 {/* Projects Component Floating Over Content */}
-{isModalOpen && (
-  <div className="fixed top-0 left-0 w-full h-full z-30 bg-white dark:bg-gray-900 overflow-y-auto p-6">
-    <Projects />
-  </div>
-)}
+<AnimatePresence>
+  {isModalOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="fixed top-0 left-0 w-full h-full z-30 bg-white dark:bg-gray-900 overflow-y-auto p-6"
+    >
+      <Projects />
+    </motion.div>
+  )}
+</AnimatePresence>
+
 
 {/* Toggle Button Always Accessible */}
 <button
