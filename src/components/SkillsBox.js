@@ -194,9 +194,9 @@ existingModals.forEach((m, index) => {
         return (
           <div
             key={i}
-            className="skill3d-item w-15 h-15 flex items-center justify-center rounded-xl bg-gray-900 border-2 cursor-pointer"
+            className="skill3d-item w-15 collidable h-15 flex items-center justify-center rounded-xl bg-gray-900 border-2 cursor-pointer"
             style={{
-              transform: `rotateY(${angle}deg) translateZ(150px)`,
+              transform: `rotateY(${angle}deg) translateZ(200px)`,
               color: skill.color,
             }}
             onClick={(e) => handleTransition(e, skill)}
