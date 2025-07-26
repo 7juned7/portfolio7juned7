@@ -5,21 +5,22 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 const cards = [
- {
-  id: 1,
-  title: "E-commerce Website",
-  image: "https://res.cloudinary.com/ddy8vp8zy/image/upload/v1753362134/WhatsApp_Image_2025-07-24_at_6.01.46_AM_u3svct.jpg",
-  tech: "Next.js, Tailwind CSS",
-description: "Freelance e-commerce project featuring secure payment integration, email service, and webhooks. Developed a secure backend and hosted the application on AWS.",
-
-  link: "https://www.daminiharts.com/",
-},
+  {
+    id: 1,
+    title: "E-commerce Website",
+    image: "https://res.cloudinary.com/ddy8vp8zy/image/upload/v1753362134/WhatsApp_Image_2025-07-24_at_6.01.46_AM_u3svct.jpg",
+    tech: "Next.js, Tailwind CSS",
+    description:
+      "Freelance e-commerce project featuring secure payment integration, email service, and webhooks. Developed a secure backend and hosted the application on AWS.",
+    link: "https://www.daminiharts.com/",
+  },
   {
     id: 2,
     title: "Restrogram",
     image: "https://res.cloudinary.com/ddy8vp8zy/image/upload/v1753364015/WhatsApp_Image_2025-07-24_at_6.29.32_AM_jfdege.jpg",
     tech: "React, Redux, Node.js",
-    description: "Full-stack digital platform where resturant can create the digital menu and scan qr to access menu.",
+    description:
+      "Full-stack digital platform where restaurant can create the digital menu and scan QR to access menu.",
     link: "https://www.restrogram.in/ff",
   },
   {
@@ -27,17 +28,15 @@ description: "Freelance e-commerce project featuring secure payment integration,
     title: "AassPass",
     image: "https://res.cloudinary.com/ddy8vp8zy/image/upload/v1753363815/WhatsApp_Image_2025-07-24_at_6.29.32_AM_jfdege.jpg",
     tech: "Socket.io, Express",
-description: "SaaS platform enabling local businesses to register, appear on a map, and publish location-based ads. Utilized Mapbox API and implemented an RBAC system to manage user roles.",
-
+    description:
+      "SaaS platform enabling local businesses to register, appear on a map, and publish location-based ads. Utilized Mapbox API and implemented an RBAC system to manage user roles.",
     link: "https://www.aasspass.co.in/",
   },
- 
 ];
 
 
 const Projects = ({showCards}) => {
   const [activeCard, setActiveCard] = useState(null);
-
   const cardWidth = 180;
   const spreadAngle = 60;
 
@@ -53,11 +52,11 @@ const Projects = ({showCards}) => {
         const middleIndex = (cards.length - 1) / 2;
         const offset = i - middleIndex;
 
-        const rotate = offset * (spreadAngle / cards.length);
-        const translateY = Math.abs(offset) * 10;
-        const translateX = offset * cardWidth * .9;
+          const rotate = offset * (spreadAngle / cards.length);
+          const translateY = Math.abs(offset) * 10;
+          const translateX = offset * cardWidth * 0.9;
 
-        const isActive = activeCard === i;
+          const isActive = activeCard === i;
 
         return (
           <motion.div
