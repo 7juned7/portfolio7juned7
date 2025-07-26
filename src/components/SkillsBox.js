@@ -94,7 +94,7 @@ const handleTransition = (e,skill) => {
 const existingModals = document.querySelectorAll(".modal-skill");
 existingModals.forEach((m, index) => {
   m.style.transform = `translate(-50%, -50%) rotateZ(${(index + 1) * 5}deg) scale(0.95)`;
-  m.style.zIndex = `${1000 - (index + 1)}`; // Push old modals behind
+  m.style.zIndex = `${10 - (index + 1)}`; // Push old modals behind
 });
   const modal = document.createElement("div");
   
@@ -107,7 +107,7 @@ existingModals.forEach((m, index) => {
   modal.style.height = `${rect.height}px`;
   modal.style.background = skill.color;
   modal.style.border = `2px solid ${skill.color}`;
-  modal.style.zIndex = "1000";
+  modal.style.zIndex = "10";
   modal.style.borderRadius = "1rem";
   modal.style.transition = "all 0.4s ease";
   modal.style.display = "flex";
@@ -145,7 +145,7 @@ existingModals.forEach((m, index) => {
     const last = modals[modals.length - 1];
     if (last) {
       last.style.transform = "translate(-50%, -50%) rotateZ(0deg) scale(1)";
-      last.style.zIndex = "1000";
+      last.style.zIndex = "10";
     }
   }, 400);
 };
@@ -196,13 +196,13 @@ existingModals.forEach((m, index) => {
             key={i}
             className="skill3d-item w-15 h-15 flex items-center justify-center rounded-xl bg-gray-900 border-2 cursor-pointer"
             style={{
-              transform: `rotateY(${angle}deg) translateZ(200px)`,
+              transform: `rotateY(${angle}deg) translateZ(150px)`,
               color: skill.color,
             }}
             onClick={(e) => handleTransition(e, skill)}
             title={skill.name}
           >
-            <div className="">{skill.icon}</div>
+            <div>{skill.icon}</div>
           </div>
         );
       })}

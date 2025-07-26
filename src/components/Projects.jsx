@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
@@ -35,7 +35,7 @@ description: "SaaS platform enabling local businesses to register, appear on a m
 ];
 
 
-const Projects = () => {
+const Projects = ({showCards}) => {
   const [activeCard, setActiveCard] = useState(null);
 
   const cardWidth = 180;
@@ -43,7 +43,11 @@ const Projects = () => {
 
   return (
     <div className="flex w-full h-full z-10 absolute top-0  left-0 justify-center items-center overflow-hidden">
-      {cards.map((card, i) => {
+      <AnimatePresence>
+
+      {showCards && 
+      
+      cards.map((card, i) => {
       
 
         const middleIndex = (cards.length - 1) / 2;
@@ -58,6 +62,7 @@ const Projects = () => {
         return (
           <motion.div
             key={card.id}
+            
             onClick={() => setActiveCard(isActive ? null : i)}
             animate={{
               rotate: isActive ? 0 : rotate,
@@ -66,6 +71,13 @@ const Projects = () => {
               y: isActive ? -80 : translateY,
               zIndex: isActive ? 999 : i,
             }}
+             exit={{
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    rotate: 0,
+                    scale: 1,
+                  }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="absolute w-64 h-72 bg-white rounded-md shadow-xl text-black font-medium flex flex-col overflow-hidden cursor-pointer"
            
@@ -94,7 +106,9 @@ const Projects = () => {
             </div>
           </motion.div>
         );
-      })}
+      })
+      }
+      </AnimatePresence>
     </div>
   );
 };

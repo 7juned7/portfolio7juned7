@@ -2,7 +2,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SkillsBox from "./SkillsBox";
-import ProjectsBox from "./ProjectBox";
 import { Sun, Moon } from "lucide-react"; // You can use any icon library
 import Projects from "./Projects";
 
@@ -39,8 +38,22 @@ const HeroSection = () => {
   const [isDark, setIsDark] = useState(true);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-
- 
+const [showCards, setShowCards] = useState(false);
+const handleToggleModal = () => {
+  if (isModalOpen) {
+    // Close logic
+    setShowCards(false); // trigger card exit
+    setTimeout(() => {
+      setIsModalOpen(false); // unmount modal after card exit
+    }, 400); // match this to your card exit animation duration
+  } else {
+    // Open logic
+    setIsModalOpen(true); // mount modal immediately
+    setTimeout(() => {
+      setShowCards(true); // trigger card enter
+    }, 50); // small delay to allow modal to appear
+  }
+};
   // Handle theme toggle
   const toggleTheme = () => {
     const newTheme = isDark ? "light" : "dark";
@@ -151,15 +164,17 @@ const HeroSection = () => {
   
 {/* Projects Component Floating Over Content */}
 {isModalOpen && (
-  <div className="fixed top-0 left-0 w-full h-full z-30 bg-white dark:bg-gray-900 overflow-y-auto p-6">
-    <Projects />
+  <div className="fixed top-0 left-0 w-full h-full z-40 bg-white dark:bg-gray-900 overflow-hidden p-6">
+    <Projects 
+    showCards={showCards}
+    />
   </div>
 )}
 
 {/* Toggle Button Always Accessible */}
 <button
-  className="cursor-pointer z-50 px-5 py-2 bg-red-500 text-white "
-  onClick={() => setIsModalOpen((prev) => !prev)}
+  className="cursor-pointer   z-50 px-5 py-2 bg-red-500 text-white "
+  onClick={handleToggleModal}
 >
   {isModalOpen ? "Hide Projects" : "View Projects"}
 </button>
